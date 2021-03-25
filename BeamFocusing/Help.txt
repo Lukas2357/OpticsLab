@@ -1,0 +1,72 @@
+-------------- Beam-Focusing Tool --------------- Lukas Hunold 13.01.2020 - V2.2
+
+This tool helps you to calculate and plot the intensity distribution of a
+focused Gaussian beam (for other input beam shapes you might want to modify the
+Fcts.py file manually). It is based on numerical integration using the angular
+spectrum representation, as discussed in detail in [1].
+
+You can get the 2D distribution along z and r for a given polar angle phi by
+pressing the 'Calculate 2D Focus' button and the intensities only along z (r=0)
+by pressing the 'Calculate Axial Focus' button.
+
+Once you did that the calculation starts and will be monitored in the terminal.
+When it is finished you will see a marker in the 'Calculations done' field.
+Now you can use the plot buttons to show the results. There are also two fit
+buttons, that provide additional information about the focus along z (position
+and FWHM), which can be interesting if you focus into a medium.
+
+You can save the intensity distribution and fit parameters to .txt files by
+pressing the 'Save Results' button. If you want to calculate the focus again,
+you can do so. Changes of the parameters in the parameter window will be applied
+immediately.
+
+You can change a bunch of parameters for the calculation, including:
+
+- IOR 1: Index of refraction of the medium surrounding the focusing objective.
+         Typically you will use 1 for air. In principle n>1 for oil immersion
+         can be used, but you will have trouble with the NA, as discussed later.
+         Make sure that 1 < IOR1 < IOR2, otherwise strange results can occur.
+
+- IOR 2: Index of refraction of the medium to be focused in.
+         Notice that the medium is assumed to be dielectric and the beam is
+         assumed to be perpendicular to the surface of that medium.
+
+- NA   : Numerical aperture of the focusing objective.
+         The program can only handle 0 < NA < 1. So oil immersion objectives
+         can not be simulated properly. Notice that the program will crash for
+         any NA >= 1 due to diverging integrals, so please avoid these inputs.
+
+- WD   : Working distance of the objective.
+         Can be interesting for comparison, but does not effect the calculation.
+
+- f0   : Filling factor of the objective (beam size / aperture size).
+         Any value > 0 can be used here, very high values (> 100) will
+         effectively result in a plane wave input beam.
+         Notice that the peak intensity will be reduced for high f0, since lots
+         of intensity is not coupled to the objective.
+
+- WL   : Wavelength of the focused laser.
+         Any value > 0 can be used, but the IOR should be modified accordingly.
+         Be careful with absorption of the medium in the chosen wavelength
+         regime. This is not taken into account in the calculations.
+
+- P    : Used laser power before the objective.
+         Just scales the peak intensity accordingly.
+
+- phi  : Polar angle chosen for calculation of 2D intensity distribution.
+         (e.g. phi = 0 calculates in the x-z-plane, phi = pi/2 in the x-y-plane)
+
+- z0   : Distance of former focus from the interface position.
+         Assuming there is no medium present, the focus will be at the WD of the
+         objective. If you now introduce a medium with its front surface placed
+         a distance z0 away from that focus position, the focus position will
+         change due to diffraction and the program calculates this new focus.
+         Make sure that z0 < 0 and z min > z0, since the program can not anymore
+         calculate the field outside the medium, once you introduced one!
+
+The other parameters are to set the minimum, maximum and number of steps
+simulated for r, z, z0.
+
+
+
+[1] "Principles of Nano-Optics" (Novotny), p.56-66 and p.73-78
