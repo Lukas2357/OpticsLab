@@ -1,5 +1,5 @@
 # Analysis and Simulation of optical Measurements
-Contains MATLAB and python files to simulate and analyse optical measurements. <br>
+Contains MATLAB and python files to simulate and analyse Optical measurements. <br>
 Was developed and used in NanoOptics Group at University Siegen. <br>
 Any subfolder contains code for a specific application, check the scripts for more details.
 
