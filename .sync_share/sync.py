@@ -490,10 +490,10 @@ def extend_gitignore():
         content = []
 
     additions = [
-        ".sync/*\n",
-        "!.sync/.last_modified.json\n",
-        "!.sync/.gdriveignore\n",
-        "!.sync/.parent_id.json\n"
+        ".sync*/*\n",
+        "!.sync*/.last_modified.json\n",
+        "!.sync*/.gdriveignore\n",
+        "!.sync*/.parent_id.json\n"
     ]
     with open(".gitignore", "a") as f:
         for line in additions:

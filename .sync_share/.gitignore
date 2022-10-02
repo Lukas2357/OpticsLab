@@ -244,5 +244,7 @@ fabric.properties
 .sync*/
 !.sync/.last_modified.json
 !.sync/.gdriveignore
-.sync/*
-!.sync/.parent_id.json
+.sync*/*
+!.sync*/.last_modified.json
+!.sync*/.gdriveignore
+!.sync*/.parent_id.json
