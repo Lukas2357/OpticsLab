@@ -1,3 +1,9 @@
 .sync/*
 !.sync/.last_modified.json
 !.sync/.gdriveignore
+!.sync/.parent_id.json
+
+.sync_share/
+!.sync_share/.last_modified.json
+!.sync_share/.gdriveignore
+!.sync_share/.parent_id.json
