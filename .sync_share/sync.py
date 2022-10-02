@@ -406,7 +406,7 @@ def sync_folder(local_folder='.', remote_folder=None, remote_parent='root',
         backup_path = local_backup(remote_folder)
         os.chdir(os.path.join(backup_path, os.getcwd().split('/')[-1]))
 
-        folder = get_remote_file(drive, parent_folder_id, remote_folder)
+        folder = create_folder(drive, remote_folder, parent_folder_id)
 
     else:
         folder = get_remote_file(drive, parent_folder_id, folder_name)
